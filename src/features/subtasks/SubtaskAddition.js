@@ -14,13 +14,11 @@ const SubtaskAddition = ({ itemId }) => {
   const item = useSelector((state) => selectItemById(state, itemId));
 
   const saveSubtask = ({ itemId }) => {
-    console.log("subtask saved: " + subtaskTitle);
     const newSubtask = {
       id: String(item.subtasks?.length ? item.subtasks.length + 1 : 1),
       title: subtaskTitle,
       completed: false,
     };
-    console.log(newSubtask);
     const updatedItem = {
       id: item.id,
       title: item.title,
@@ -30,7 +28,9 @@ const SubtaskAddition = ({ itemId }) => {
       subtasks: [...item.subtasks, newSubtask],
     };
     setSubtaskTitle("");
-    dispatch(updateItem(updatedItem));
+    if (subtaskTitle) {
+      dispatch(updateItem(updatedItem));
+    }
   };
 
   return (
