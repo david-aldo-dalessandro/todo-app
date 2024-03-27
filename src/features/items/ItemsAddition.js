@@ -7,7 +7,6 @@
 import { useState } from "react";
 import { addNewItem, selectItemCount } from "./itemsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { UseDispatch } from "react-redux";
 
 const ItemsAddition = () => {
   const dispatch = useDispatch();

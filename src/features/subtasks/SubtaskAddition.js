@@ -5,12 +5,32 @@
  */
 
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectItemById, updateItem } from "../items/itemsSlice";
 
-const SubtaskAddition = () => {
+const SubtaskAddition = ({ itemId }) => {
   const [subtaskTitle, setSubtaskTitle] = useState("");
+  const dispatch = useDispatch();
+  const item = useSelector((state) => selectItemById(state, itemId));
 
-  const saveSubtask = () => {
+  const saveSubtask = ({ itemId }) => {
     console.log("subtask saved: " + subtaskTitle);
+    const newSubtask = {
+      id: String(item.subtasks?.length ? item.subtasks.length + 1 : 1),
+      title: subtaskTitle,
+      completed: false,
+    };
+    console.log(newSubtask);
+    const updatedItem = {
+      id: item.id,
+      title: item.title,
+      completed: item.completed,
+      important: item.important,
+      category: item.category,
+      subtasks: [...item.subtasks, newSubtask],
+    };
+    setSubtaskTitle("");
+    dispatch(updateItem(updatedItem));
   };
 
   return (

@@ -21,7 +21,7 @@ const ItemsTasks = () => {
         <h2>{item.title}</h2>
 
         <h3> Subtasks </h3>
-        <SubtaskAddition />
+        <SubtaskAddition itemId={itemId} />
         <section>
           <ul>
             {item.subtasks?.map((task) => (

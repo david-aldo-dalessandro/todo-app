@@ -21,6 +21,7 @@ const ItemsStar = ({ item }) => {
         completed: item.completed,
         important: item.important === 0 ? 1 : 0,
         category: item.category,
+        subtasks: item.subtasks,
       })
     );
     setImportant(!important);

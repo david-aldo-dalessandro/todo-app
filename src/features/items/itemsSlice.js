@@ -1,7 +1,7 @@
 /* itemsSlice.js
  * David D'Alessandro
  * March 26, 2024
- * A collection of reducer logic and actions for the posts feature of the app
+ * A collection of reducer logic and actions for the items feature of the app
  */
 
 import {
@@ -53,6 +53,7 @@ export const updateItem = createAsyncThunk(
       completed: payload.completed,
       important: payload.important,
       category: payload.category,
+      subtasks: payload.subtasks ? payload.subtasks : [],
     };
     const response = await axiosInstance.put(`todos/${id}`, newPayload);
 
