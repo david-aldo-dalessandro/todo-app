@@ -19,7 +19,6 @@ const ItemsTasks = () => {
     const updatedItemSubtaskArray = itemSubtaskArray.filter(
       (subtask) => subtask.id !== String(e.target.value)
     );
-    console.log(item.id);
     const updatedItem = {
       id: item.id,
       title: item.title,
@@ -41,17 +40,20 @@ const ItemsTasks = () => {
         <h3> Subtasks </h3>
         <SubtaskAddition itemId={itemId} />
         <section>
-          <ul>
-            {item.subtasks?.map((task) => (
-              <li
-                key={task.id}
-                value={task.id}
-                onClick={(e) => deleteSubtask(e)}
-              >
-                {task.title}
-              </li>
-            ))}
-          </ul>
+          {item.subtasks.length > 0 && (
+            <ul>
+              {item.subtasks?.map((task) => (
+                <li
+                  key={task.id}
+                  value={task.id}
+                  onClick={(e) => deleteSubtask(e)}
+                >
+                  {task.title}
+                </li>
+              ))}
+            </ul>
+          )}
+          {item.subtasks.length === 0 && <div> No Subtasks, add one above</div>}
         </section>
       </div>
     );

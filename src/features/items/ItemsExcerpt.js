@@ -19,6 +19,14 @@ const ItemsExcerpt = ({ itemId }) => {
       <ItemsStar item={item} />
       <Link to={`/item/${itemId}`}>{item.title}</Link>
       <ItemsDelete itemId={itemId} />
+      {item.subtasks.length !== 0 && (
+        <ul>
+          <li>
+            {item.subtasks.length} {""}
+            {item.subtasks.length === 0 ? <> subtask </> : <>subtasks</>}
+          </li>
+        </ul>
+      )}
     </li>
   );
 };

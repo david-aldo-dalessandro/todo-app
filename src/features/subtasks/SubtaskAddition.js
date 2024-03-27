@@ -25,7 +25,7 @@ const SubtaskAddition = ({ itemId }) => {
       completed: item.completed,
       important: item.important,
       category: item.category,
-      subtasks: [...item.subtasks, newSubtask],
+      subtasks: item.subtasks ? [...item.subtasks, newSubtask] : [newSubtask],
     };
     setSubtaskTitle("");
     if (subtaskTitle) {
