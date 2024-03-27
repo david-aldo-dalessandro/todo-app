@@ -7,6 +7,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectItemById } from "./itemsSlice";
+import SubtaskAddition from "../subtasks/SubtaskAddition";
 
 const ItemsTasks = () => {
   const { itemId } = useParams();
@@ -20,6 +21,7 @@ const ItemsTasks = () => {
         <h2>{item.title}</h2>
 
         <h3> Subtasks </h3>
+        <SubtaskAddition />
         <section>
           <ul>
             {item.subtasks?.map((task) => (
