@@ -1,15 +1,15 @@
 import "./App.css";
-import ItemsList from "./features/items/ItemsList";
-import ItemsAddition from "./features/items/ItemsAddition";
+
+import { Routes, Route } from "react-router-dom";
+import ItemsHome from "./features/items/ItemsHome";
+import ItemsTasks from "./features/items/ItemsTasks";
 
 function App() {
   return (
-    <div className="App">
-      To do app
-      <br />
-      <ItemsAddition />
-      <ItemsList />
-    </div>
+    <Routes>
+      <Route index element={<ItemsHome />} />
+      <Route path="/item/:itemId" element={<ItemsTasks />} />
+    </Routes>
   );
 }
 

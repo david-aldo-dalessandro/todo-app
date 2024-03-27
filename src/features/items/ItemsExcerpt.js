@@ -6,9 +6,10 @@
 
 import React from "react";
 import { selectItemById } from "./itemsSlice";
-import { UseSelector, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ItemsDelete from "./ItemsDelete";
 import ItemsStar from "./ItemsStar";
+import { Link } from "react-router-dom";
 
 const ItemsExcerpt = ({ itemId }) => {
   const item = useSelector((state) => selectItemById(state, itemId));
@@ -16,7 +17,8 @@ const ItemsExcerpt = ({ itemId }) => {
   return (
     <li>
       <ItemsStar item={item} />
-      {item.title} <ItemsDelete itemId={itemId} />
+      <Link to={`/item/${itemId}`}>{item.title}</Link>
+      <ItemsDelete itemId={itemId} />
     </li>
   );
 };
