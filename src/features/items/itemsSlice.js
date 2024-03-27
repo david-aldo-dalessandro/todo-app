@@ -50,7 +50,7 @@ export const updateItem = createAsyncThunk(
       id: payload.id,
       title: payload.title,
       completed: payload.completed,
-      important: payload.important === 0 ? 1 : 0,
+      important: payload.important,
       category: payload.category,
     };
     const response = await axiosInstance.put(`todos/${id}`, newPayload);

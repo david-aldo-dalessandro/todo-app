@@ -9,6 +9,7 @@ import { selectItemById } from "./itemsSlice";
 import { UseSelector, useSelector } from "react-redux";
 import ItemsDelete from "./ItemsDelete";
 import ItemsStar from "./ItemsStar";
+import ItemsOrder from "./ItemsOrder";
 
 const ItemsExcerpt = ({ itemId }) => {
   const item = useSelector((state) => selectItemById(state, itemId));
@@ -16,7 +17,9 @@ const ItemsExcerpt = ({ itemId }) => {
   return (
     <li>
       <ItemsStar item={item} />
-      {item.title} <ItemsDelete itemId={itemId} />
+      {item.title} {"  "}
+      <ItemsOrder item={item} />
+      <ItemsDelete itemId={itemId} />
     </li>
   );
 };
