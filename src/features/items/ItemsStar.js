@@ -14,7 +14,15 @@ const ItemsStar = ({ item }) => {
   const [important, setImportant] = useState(Boolean(item.important));
 
   const toggle = (e) => {
-    dispatch(updateItem(item));
+    dispatch(
+      updateItem({
+        id: item.id,
+        title: item.title,
+        completed: item.completed,
+        important: item.important === 0 ? 1 : 0,
+        category: item.category,
+      })
+    );
     setImportant(!important);
   };
   return (
