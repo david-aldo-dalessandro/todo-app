@@ -12,7 +12,9 @@ import {
 } from "@reduxjs/toolkit";
 import axiosInstance from "../../api/axiosInstance";
 
-const itemsAdapter = createEntityAdapter();
+const itemsAdapter = createEntityAdapter({
+  sortComparer: (a, b) => b.important - a.important,
+});
 
 const initialState = itemsAdapter.getInitialState({
   status: "idle",
@@ -32,9 +34,27 @@ export const addNewItem = createAsyncThunk(
       id: String(id),
       title: title,
       completed: false,
+      important: 0,
       category: "general",
     };
     const response = await axiosInstance.post("todos", newItem);
+    return response.data;
+  }
+);
+
+export const updateItem = createAsyncThunk(
+  "items/updateItem",
+  async (payload) => {
+    const { id } = payload;
+    const newPayload = {
+      id: payload.id,
+      title: payload.title,
+      completed: payload.completed,
+      important: payload.important === 0 ? 1 : 0,
+      category: payload.category,
+    };
+    const response = await axiosInstance.put(`todos/${id}`, newPayload);
+
     return response.data;
   }
 );
@@ -61,6 +81,13 @@ const itemsSlice = createSlice({
       })
       .addCase(deleteItem.fulfilled, (state, action) => {
         itemsAdapter.removeOne(state, action.payload.id);
+      })
+      .addCase(updateItem.fulfilled, (state, action) => {
+        const { id } = action.payload;
+        itemsAdapter.updateOne(state, {
+          id: id,
+          changes: action.payload,
+        });
       });
   },
 });
