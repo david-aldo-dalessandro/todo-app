@@ -6,18 +6,24 @@
 
 import React from "react";
 import { selectItemById } from "./itemsSlice";
-import { useSelector } from "react-redux";
-import ItemsDelete from "./ItemsDelete";
+import { useSelector, useDispatch } from "react-redux";
 import ItemsStar from "./ItemsStar";
-import { Link } from "react-router-dom";
+import { deleteItem } from "./itemsSlice";
+import ItemsDelete from "./ItemsDelete";
 
 const ItemsExcerpt = ({ itemId }) => {
+  const dispatch = useDispatch();
   const item = useSelector((state) => selectItemById(state, itemId));
 
+  const deleteIt = (e) => {
+    e.preventDefault();
+    dispatch(deleteItem(itemId));
+  };
+
   return (
-    <li>
+    <li onDoubleClick={(e) => deleteIt(e)}>
       <ItemsStar item={item} />
-      <Link to={`/item/${itemId}`}>{item.title}</Link>
+      {item.title}
       <ItemsDelete itemId={itemId} />
       {item.subtasks.length !== 0 && (
         <ul>

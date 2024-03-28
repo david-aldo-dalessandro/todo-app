@@ -46,7 +46,7 @@ const ItemsTasks = () => {
                 <li
                   key={task.id}
                   value={task.id}
-                  onClick={(e) => deleteSubtask(e)}
+                  onDoubleClick={(e) => deleteSubtask(e)}
                 >
                   {task.title}
                 </li>

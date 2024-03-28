@@ -33,7 +33,14 @@ li ul {
   margin: 0; /* Remove margin for nested lists */
 }
 
+li:hover{
+  background-color: #a9b5cd;
+}
+
 li {
+
+  user-select: none; /*prevents double clicking from highlighting text*/
+
   max-width: 200px; /* Set maximum width */
   
   margin: 0 auto; /* Center the container horizontally */
@@ -60,8 +67,8 @@ li li {
   padding: 2px 4px; /* Adjust padding to change button size */
   border: none;
   border-radius: 30%; /* Make button round */
-  background-color: red; /* Set button color to red */
-  color: white; /* Set text color to white */
+  background-color: rgb(192, 192, 192); /* Set button color to red */
+  color: black; /* Set text color to white */
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -70,7 +77,7 @@ li li {
 }
 
 .deleteButton:hover {
-  background-color: darkred; /* Change color on hover */
+  background-color: rgb(153, 153, 153); /* Change color on hover */
 }
 
 /* Style the checkbox container */
@@ -83,14 +90,14 @@ li li {
 /* Style the checkbox */
 .starButton-container input[type="checkbox"] {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 0px;
+  top: -4px;
   appearance: none; /* Remove default appearance */
-  width: 11px; /* Adjust checkbox size */
-  height: 11px; /* Adjust checkbox size */
+  width: 20px; /* Adjust checkbox size */
+  height: 20px; /* Adjust checkbox size */
   background-color: transparent; /* Make background transparent */
   border: 1px solid black; /* Add border */
-  border-radius: 5px; /* Add border radius */
+  border-radius: 20px; /* Add border radius */
   outline: none; /* Remove outline */
 }
 

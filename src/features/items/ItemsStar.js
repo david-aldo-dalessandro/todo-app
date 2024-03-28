@@ -13,7 +13,7 @@ const ItemsStar = ({ item }) => {
 
   const [important, setImportant] = useState(Boolean(item.important));
 
-  const toggle = (e) => {
+  const toggle = () => {
     dispatch(
       updateItem({
         id: item.id,
@@ -32,7 +32,7 @@ const ItemsStar = ({ item }) => {
         type="checkbox"
         className="starButton"
         checked={important}
-        onChange={(e) => toggle(e)}
+        onChange={toggle}
       />
     </div>
   );

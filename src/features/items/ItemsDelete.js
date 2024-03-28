@@ -5,17 +5,18 @@
  */
 import { useDispatch } from "react-redux";
 import { deleteItem } from "./itemsSlice";
+import { useNavigate } from "react-router-dom";
 
 const ItemsDelete = ({ itemId }) => {
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const deleteIt = () => {
-    dispatch(deleteItem(itemId));
+  const goToSubtasks = () => {
+    navigate(`/item/${itemId}`);
   };
 
   return (
-    <button className="deleteButton" onClick={deleteIt}>
-      x
+    <button className="deleteButton" onClick={goToSubtasks}>
+      ...
     </button>
   );
 };

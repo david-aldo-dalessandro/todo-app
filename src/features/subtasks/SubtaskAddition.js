@@ -13,10 +13,10 @@ const SubtaskAddition = ({ itemId }) => {
   const dispatch = useDispatch();
   const item = useSelector((state) => selectItemById(state, itemId));
 
-  const saveSubtask = ({ itemId }) => {
+  const saveSubtask = () => {
     const newSubtask = {
       id: String(item.subtasks?.length ? item.subtasks.length + 1 : 1),
-      title: subtaskTitle,
+      title: subtaskTitle.substring(0, 20),
       completed: false,
     };
     const updatedItem = {
@@ -33,6 +33,13 @@ const SubtaskAddition = ({ itemId }) => {
     }
   };
 
+  const enterPressed = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      saveSubtask();
+    }
+  };
+
   return (
     <>
       <form>
@@ -43,11 +50,8 @@ const SubtaskAddition = ({ itemId }) => {
           placeholder="Enter Task"
           value={subtaskTitle}
           onChange={(e) => setSubtaskTitle(e.target.value)}
+          onKeyDown={(e) => enterPressed(e)}
         />
-        <br />
-        <button type="button" onClick={saveSubtask}>
-          Save Subtask
-        </button>
       </form>
     </>
   );
