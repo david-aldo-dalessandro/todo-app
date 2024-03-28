@@ -28,6 +28,7 @@
   color: #61dafb;
 }
 
+
 li ul {
   padding: 5px; /* Remove padding for nested lists */
   margin: 0; /* Remove margin for nested lists */
@@ -53,6 +54,7 @@ li {
   background-color: #cedcf7; /* Background color for outer list items */
   border: 1px solid black; /* Border style for outer list items */
   border-radius: 5px; /* Rounded border for outer list items */
+  transition: background-color 0.3s; /* Smooth transition effect */
 }
 
 li li {
@@ -60,9 +62,10 @@ li li {
   padding: 0px 0px; /* Add padding for spacing inside each inner list item */
   margin: 0px 0; /* Add margin for spacing between inner list items */
   background-color: rgb(163, 182, 252);
+  transition: background-color 0.3s; /* Smooth transition effect */
 }
 
-.deleteButton {
+.expandButton {
  display: flex;
   padding: 2px 4px; /* Adjust padding to change button size */
   border: none;
@@ -74,9 +77,10 @@ li li {
   cursor: pointer;
   outline: none;
   float: right; /* Position button to the right */
+  transition: background-color 0.3s; /* Smooth transition effect */
 }
 
-.deleteButton:hover {
+.expandButton:hover {
   background-color: rgb(153, 153, 153); /* Change color on hover */
 }
 
@@ -89,20 +93,37 @@ li li {
 
 /* Style the checkbox */
 .starButton-container input[type="checkbox"] {
+  user-select: none; /*prevents double clicking from highlighting text*/
+
   position: absolute;
-  left: 0px;
-  top: -4px;
+  left: -13.5px;
+  top: -6px;
   appearance: none; /* Remove default appearance */
   width: 20px; /* Adjust checkbox size */
-  height: 20px; /* Adjust checkbox size */
+  height: 25px; /* Adjust checkbox size */
   background-color: transparent; /* Make background transparent */
   border: 1px solid black; /* Add border */
-  border-radius: 20px; /* Add border radius */
+  border-radius: 5px; /* Add border radius */
   outline: none; /* Remove outline */
 }
 
 /* Style the checkbox when checked */
 .starButton-container input[type="checkbox"]:checked {
   background-color: yellow; /* Set background color when checked */
+}
+
+.clearButton{
+  margin-bottom: 10px;
+  border-radius: 5px; /* Add rounded edges */
+  background-color: lightcoral; /* Change the background color to light red */
+  color: white; /* Set text color to white */
+  padding: 5px 10px; /* Add padding to the button */
+  border: none; /* Remove border */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s; /* Smooth transition effect */
+}
+
+.clearButton:hover{
+  background-color: rgb(207, 108, 108);
 }
 

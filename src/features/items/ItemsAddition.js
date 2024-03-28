@@ -16,13 +16,12 @@ const ItemsAddition = () => {
 
   const addItemToState = () => {
     if (item) {
-      dispatch(addNewItem({ id: id + 1, title: item.substring(0, 20) }));
+      dispatch(addNewItem({ id: id + 1, title: item }));
       setItem("");
     }
   };
 
   const enterPressed = (e) => {
-    console.log("hi");
     if (e.key === "Enter") {
       e.preventDefault();
       addItemToState();

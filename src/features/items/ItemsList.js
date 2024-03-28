@@ -5,11 +5,12 @@
  */
 
 import React from "react";
-import { selectItemIds } from "./itemsSlice";
-import { useSelector } from "react-redux";
+import { selectItemIds, deleteItem } from "./itemsSlice";
+import { useSelector, useDispatch } from "react-redux";
 import ItemsExcerpt from "./ItemsExcerpt";
 
 const ItemsList = () => {
+  const dispatch = useDispatch();
   const itemIds = useSelector(selectItemIds);
   let content;
   if (itemIds.length > 0) {
@@ -20,9 +21,19 @@ const ItemsList = () => {
     content = <div> No current items to do</div>;
   }
 
+  const clearAll = () => {
+    itemIds.map((itemId) => dispatch(deleteItem(itemId)));
+  };
+
   return (
     <section>
-      <h3>ItemsList </h3>
+      <h3>To Do </h3>
+      {itemIds.length > 0 && (
+        <button className="clearButton" onClick={clearAll}>
+          {" "}
+          Clear all{" "}
+        </button>
+      )}
       {content}
     </section>
   );

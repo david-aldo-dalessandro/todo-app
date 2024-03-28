@@ -9,7 +9,7 @@ import { selectItemById } from "./itemsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import ItemsStar from "./ItemsStar";
 import { deleteItem } from "./itemsSlice";
-import ItemsDelete from "./ItemsDelete";
+import ItemsExpandSubtasks from "./ItemsExpandSubtasks";
 
 const ItemsExcerpt = ({ itemId }) => {
   const dispatch = useDispatch();
@@ -23,8 +23,9 @@ const ItemsExcerpt = ({ itemId }) => {
   return (
     <li onDoubleClick={(e) => deleteIt(e)}>
       <ItemsStar item={item} />
-      {item.title}
-      <ItemsDelete itemId={itemId} />
+      {item.title.substring(0, 20)}
+      {item.title.length > 20 ? <>...</> : <></>}
+      <ItemsExpandSubtasks itemId={itemId} />
       {item.subtasks.length !== 0 && (
         <ul>
           <li>
