@@ -7,7 +7,6 @@
 import {
   createSlice,
   createAsyncThunk,
-  createSelector,
   createEntityAdapter,
 } from "@reduxjs/toolkit";
 import axiosInstance from "../../api/axiosInstance";

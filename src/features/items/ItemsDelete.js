@@ -13,7 +13,11 @@ const ItemsDelete = ({ itemId }) => {
     dispatch(deleteItem(itemId));
   };
 
-  return <button onClick={deleteIt}>x</button>;
+  return (
+    <button className="deleteButton" onClick={deleteIt}>
+      x
+    </button>
+  );
 };
 
 export default ItemsDelete;

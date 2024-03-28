@@ -5,8 +5,8 @@
  */
 
 import { useState } from "react";
-import { selectItemById, updateItem } from "./itemsSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { updateItem } from "./itemsSlice";
+import { useDispatch } from "react-redux";
 
 const ItemsStar = ({ item }) => {
   const dispatch = useDispatch();
@@ -27,12 +27,14 @@ const ItemsStar = ({ item }) => {
     setImportant(!important);
   };
   return (
-    <input
-      type="checkbox"
-      className="starButton"
-      checked={important}
-      onChange={(e) => toggle(e)}
-    />
+    <div className="starButton-container">
+      <input
+        type="checkbox"
+        className="starButton"
+        checked={important}
+        onChange={(e) => toggle(e)}
+      />
+    </div>
   );
 };
 

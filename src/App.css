@@ -28,8 +28,74 @@
   color: #61dafb;
 }
 
+li ul {
+  padding: 5px; /* Remove padding for nested lists */
+  margin: 0; /* Remove margin for nested lists */
+}
 
 li {
+  max-width: 200px; /* Set maximum width */
+  
+  margin: 0 auto; /* Center the container horizontally */
+
   text-align: center; /* Align the content of list items to the left */
   list-style-position: inside; /* Position the bullet points inside the list items */
+
+  list-style-type: none; /* Remove default bullet point */
+  padding: 2px 10px; /* Add padding for spacing inside each list item */
+  background-color: #cedcf7; /* Background color for outer list items */
+  border: 1px solid black; /* Border style for outer list items */
+  border-radius: 5px; /* Rounded border for outer list items */
 }
+
+li li {
+  list-style-type: none; /* Remove default bullet point */
+  padding: 0px 0px; /* Add padding for spacing inside each inner list item */
+  margin: 0px 0; /* Add margin for spacing between inner list items */
+  background-color: rgb(163, 182, 252);
+}
+
+.deleteButton {
+ display: flex;
+  padding: 2px 4px; /* Adjust padding to change button size */
+  border: none;
+  border-radius: 30%; /* Make button round */
+  background-color: red; /* Set button color to red */
+  color: white; /* Set text color to white */
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  float: right; /* Position button to the right */
+}
+
+.deleteButton:hover {
+  background-color: darkred; /* Change color on hover */
+}
+
+/* Style the checkbox container */
+.starButton-container {
+  display: flex;
+  position: relative;
+  padding-left: 10px; /* Adjust spacing between checkbox and label */
+}
+
+/* Style the checkbox */
+.starButton-container input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  appearance: none; /* Remove default appearance */
+  width: 11px; /* Adjust checkbox size */
+  height: 11px; /* Adjust checkbox size */
+  background-color: transparent; /* Make background transparent */
+  border: 1px solid black; /* Add border */
+  border-radius: 5px; /* Add border radius */
+  outline: none; /* Remove outline */
+}
+
+/* Style the checkbox when checked */
+.starButton-container input[type="checkbox"]:checked {
+  background-color: yellow; /* Set background color when checked */
+}
+
