@@ -14,7 +14,7 @@ const TabGenerator = ({ itemIds, itemCats }) => {
   const dispatch = useDispatch();
   const [itemCategory, setItemCategory] = useState("all");
 
-  let itemTabs = [...itemCats].sort();
+  let itemTabs = [...itemCats].sort().filter((itemTab) => itemTab !== "all");
   let tabs;
 
   const changeTab = (itemCategory) => {

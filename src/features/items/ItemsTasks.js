@@ -4,7 +4,7 @@
  * Component to render all subtasks of an item
  */
 
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectItemById, updateItem } from "./itemsSlice";
 import SubtaskAddition from "../subtasks/SubtaskAddition";
