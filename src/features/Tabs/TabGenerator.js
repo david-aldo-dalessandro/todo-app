@@ -6,9 +6,22 @@
 
 import ItemsExcerpt from "../items/ItemsExcerpt";
 import { deleteItem } from "../items/itemsSlice";
+import TabItem from "./TabItem";
 import { useDispatch } from "react-redux";
-const TabGenerator = ({ itemIds }) => {
+import { useState } from "react";
+
+const TabGenerator = ({ itemIds, itemCats }) => {
   const dispatch = useDispatch();
+  //const [itemTabs, setItemTabs] = useState([...itemCats])
+
+  let itemTabs = [...itemCats];
+  let tabs;
+
+  if (itemTabs.length > 0) {
+    tabs = itemTabs.map((itemTab) => (
+      <TabItem key={itemTab} itemTab={itemTab} />
+    ));
+  }
 
   let content;
   if (itemIds.length > 0) {
@@ -32,8 +45,8 @@ const TabGenerator = ({ itemIds }) => {
         </button>
       )}
       <br />
-      <input type="text" placeholder="Enter Tab Name"></input>
-      <button className="newTabButton">+</button>
+      {tabs}
+      <br />
       {content}
     </>
   );

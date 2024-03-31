@@ -8,6 +8,7 @@ import {
   createSlice,
   createAsyncThunk,
   createEntityAdapter,
+  createSelector,
 } from "@reduxjs/toolkit";
 import axiosInstance from "../../api/axiosInstance";
 
@@ -34,7 +35,7 @@ export const addNewItem = createAsyncThunk(
       title: title,
       completed: false,
       important: 0,
-      category: category ? category : "general",
+      category: category ? category.toLowerCase() : "general",
       subtasks: [],
     };
     const response = await axiosInstance.post("todos", newItem);
@@ -103,3 +104,8 @@ export const {
   selectIds: selectItemIds,
   selectTotal: selectItemCount,
 } = itemsAdapter.getSelectors((state) => state.items);
+
+//Added this for the tab generator, maps all the item's category as a set to remove duplicates
+export const selectItemCategories = createSelector(selectAllItems, (items) => {
+  return new Set(items.map((item) => item.category));
+});

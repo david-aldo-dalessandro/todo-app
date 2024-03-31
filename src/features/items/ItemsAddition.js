@@ -13,11 +13,13 @@ const ItemsAddition = () => {
 
   const id = useSelector(selectItemCount);
   const [item, setItem] = useState("");
+  const [cat, setCat] = useState("");
 
   const addItemToState = () => {
     if (item) {
-      dispatch(addNewItem({ id: id + 1, title: item }));
+      dispatch(addNewItem({ id: id + 1, title: item, category: cat }));
       setItem("");
+      setCat("");
     }
   };
 
@@ -29,6 +31,7 @@ const ItemsAddition = () => {
   };
 
   const enterItem = (e) => setItem(e.target.value);
+  const enterCategory = (e) => setCat(e.target.value);
 
   return (
     <>
@@ -37,6 +40,14 @@ const ItemsAddition = () => {
         placeholder="Enter Item To Do"
         value={item}
         onChange={(e) => enterItem(e)}
+        onKeyDown={(e) => enterPressed(e)}
+      ></input>
+      <br />
+      <input
+        type="text"
+        placeholder="Enter Category"
+        value={cat}
+        onChange={(e) => enterCategory(e)}
         onKeyDown={(e) => enterPressed(e)}
       ></input>
     </>
