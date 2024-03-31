@@ -4,10 +4,19 @@
  * Component to display a single tab
  */
 
-const TabItem = ({ itemTab }) => {
+import { useState } from "react";
+
+const TabItem = ({ itemTab, onTabClick }) => {
+  const [tab, setTab] = useState(itemTab);
+
+  const returnTabSelection = () => {
+    console.log("setting tab to: " + tab);
+    onTabClick(tab);
+  };
+
   return (
     <>
-      <button>{itemTab}</button>{" "}
+      <button onClick={returnTabSelection}>{tab}</button>{" "}
     </>
   );
 };

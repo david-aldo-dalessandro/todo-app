@@ -12,21 +12,25 @@ import { useState } from "react";
 
 const TabGenerator = ({ itemIds, itemCats }) => {
   const dispatch = useDispatch();
-  //const [itemTabs, setItemTabs] = useState([...itemCats])
+  const [itemCategory, setItemCategory] = useState("all");
 
-  let itemTabs = [...itemCats];
+  let itemTabs = [...itemCats].sort();
   let tabs;
+
+  const changeTab = (itemCategory) => {
+    setItemCategory(itemCategory);
+  };
 
   if (itemTabs.length > 0) {
     tabs = itemTabs.map((itemTab) => (
-      <TabItem key={itemTab} itemTab={itemTab} />
+      <TabItem key={itemTab} itemTab={itemTab} onTabClick={changeTab} />
     ));
   }
 
   let content;
   if (itemIds.length > 0) {
     content = itemIds.map((itemId) => (
-      <ItemsExcerpt key={itemId} itemId={itemId} />
+      <ItemsExcerpt key={itemId} itemId={itemId} itemCategory={itemCategory} />
     ));
   } else {
     content = <div> No current items to do</div>;
@@ -34,6 +38,7 @@ const TabGenerator = ({ itemIds, itemCats }) => {
 
   const clearAll = () => {
     itemIds.map((itemId) => dispatch(deleteItem(itemId)));
+    setItemCategory("general");
   };
 
   return (
@@ -45,6 +50,9 @@ const TabGenerator = ({ itemIds, itemCats }) => {
         </button>
       )}
       <br />
+      {itemIds.length > 0 && (
+        <TabItem key={0} itemTab="all" onTabClick={changeTab} />
+      )}
       {tabs}
       <br />
       {content}

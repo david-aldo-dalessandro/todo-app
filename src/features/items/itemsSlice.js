@@ -35,7 +35,7 @@ export const addNewItem = createAsyncThunk(
       title: title,
       completed: false,
       important: 0,
-      category: category ? category.toLowerCase() : "general",
+      category: category ? category.toLowerCase() : "all",
       subtasks: [],
     };
     const response = await axiosInstance.post("todos", newItem);
