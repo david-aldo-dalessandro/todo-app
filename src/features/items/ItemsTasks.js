@@ -8,6 +8,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectItemById, updateItem } from "./itemsSlice";
 import SubtaskAddition from "../subtasks/SubtaskAddition";
+import SubtaskExcerpt from "../subtasks/SubtaskExcerpt";
+import { useState } from "react";
 
 const ItemsTasks = () => {
   const navigate = useNavigate();
@@ -31,6 +33,20 @@ const ItemsTasks = () => {
     dispatch(updateItem(updatedItem));
   };
 
+  let subtasks;
+
+  if (item.subtasks.length > 0) {
+    subtasks = item.subtasks.map((subtask) => (
+      <SubtaskExcerpt
+        key={subtask.id}
+        subtask={subtask}
+        deleteSubtask={deleteSubtask}
+      />
+    ));
+  } else {
+    subtasks = <div> No subtasks currently, add on above</div>;
+  }
+
   if (item) {
     return (
       <div className="App">
@@ -40,22 +56,7 @@ const ItemsTasks = () => {
 
         <h3> Subtasks </h3>
         <SubtaskAddition itemId={itemId} />
-        <section>
-          {item.subtasks.length > 0 && (
-            <ul>
-              {item.subtasks?.map((task) => (
-                <li
-                  key={task.id}
-                  value={task.id}
-                  onDoubleClick={(e) => deleteSubtask(e)}
-                >
-                  {task.title}
-                </li>
-              ))}
-            </ul>
-          )}
-          {item.subtasks.length === 0 && <div> No Subtasks, add one above</div>}
-        </section>
+        {subtasks}
       </div>
     );
   }

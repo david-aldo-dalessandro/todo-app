@@ -16,7 +16,7 @@ const SubtaskAddition = ({ itemId }) => {
   const saveSubtask = () => {
     const newSubtask = {
       id: String(item.subtasks?.length ? item.subtasks.length + 1 : 1),
-      title: subtaskTitle.substring(0, 20),
+      title: subtaskTitle,
       completed: false,
     };
     const updatedItem = {

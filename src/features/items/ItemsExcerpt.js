@@ -4,7 +4,7 @@
  * Component for listing a single item and its fields
  */
 
-import React from "react";
+import { useState } from "react";
 import { selectItemById } from "./itemsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import ItemsStar from "./ItemsStar";
@@ -14,29 +14,45 @@ import ItemsExpandSubtasks from "./ItemsExpandSubtasks";
 const ItemsExcerpt = ({ itemId, itemCategory, onDelete }) => {
   const dispatch = useDispatch();
   const itemSelected = useSelector((state) => selectItemById(state, itemId));
-
-  const item =
+  const [item, setItem] = useState(
     itemCategory === "all"
       ? itemSelected
       : itemCategory === itemSelected.category
       ? itemSelected
-      : undefined;
+      : undefined
+  );
+  const [itemTitle, setItemTitle] = useState(item.title.substring(0, 20));
+
   const deleteIt = (e) => {
     e.preventDefault();
     dispatch(deleteItem(itemId));
     onDelete("all");
   };
 
+  const shortenText = () => {
+    setItemTitle(item.title.substring(0, 20));
+  };
+
+  const looongText = () => {
+    setItemTitle(item.title);
+  };
+
   return (
     item && (
-      <li onDoubleClick={(e) => deleteIt(e)}>
+      <li
+        onDoubleClick={(e) => deleteIt(e)}
+        onMouseLeave={shortenText}
+        onMouseEnter={looongText}
+      >
         <ItemsStar item={item} />
-        {item.title.substring(0, 20)}
-        {item.title.length > 20 ? <>...</> : <></>}
+        <span className="liContents">
+          {itemTitle}
+          {itemTitle.length === 20 ? <>...</> : <></>}
+        </span>
         <ItemsExpandSubtasks itemId={itemId} />
         {item.subtasks.length !== 0 && (
           <ul>
-            <li>
+            <li className="liSubtask">
               {item.subtasks.length} {""}
               {item.subtasks.length === 0 ? <> subtask </> : <>subtasks</>}
             </li>
