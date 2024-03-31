@@ -4,12 +4,13 @@
  * Component to render all subtasks of an item
  */
 
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectItemById, updateItem } from "./itemsSlice";
 import SubtaskAddition from "../subtasks/SubtaskAddition";
 
 const ItemsTasks = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { itemId } = useParams();
   const item = useSelector((state) => selectItemById(state, itemId));
@@ -33,7 +34,7 @@ const ItemsTasks = () => {
   if (item) {
     return (
       <div className="App">
-        <Link to={"/"}> Back</Link>
+        <button onClick={() => navigate(-1)}>Back</button>
         <br />
         <h2>{item.title}</h2>
 

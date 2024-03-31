@@ -11,10 +11,9 @@ import ItemsStar from "./ItemsStar";
 import { deleteItem } from "./itemsSlice";
 import ItemsExpandSubtasks from "./ItemsExpandSubtasks";
 
-const ItemsExcerpt = ({ itemId, itemCategory }) => {
+const ItemsExcerpt = ({ itemId, itemCategory, onDelete }) => {
   const dispatch = useDispatch();
   const itemSelected = useSelector((state) => selectItemById(state, itemId));
-  //const item = itemSelected.category === itemCategory ? itemSelected : undefined;
 
   const item =
     itemCategory === "all"
@@ -25,6 +24,7 @@ const ItemsExcerpt = ({ itemId, itemCategory }) => {
   const deleteIt = (e) => {
     e.preventDefault();
     dispatch(deleteItem(itemId));
+    onDelete("all");
   };
 
   return (

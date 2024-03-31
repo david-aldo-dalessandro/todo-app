@@ -127,3 +127,41 @@ li li {
   background-color: rgb(189, 67, 67);
 }
 
+/* Style for the container of tabs */
+.tab-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow tabs to wrap to the next line */
+  max-width: 225px; /* Set the maximum width before wrapping */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Style for each tab */
+.tab {
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-bottom: none; /* Remove border bottom for tabs except the last one */
+  border-radius: 5px 5px 0 0; /* Rounded corners only on the top */
+  cursor: pointer;
+  margin-right: 0px; /* Spacing between tabs */
+  margin-bottom: 5px; /* Spacing between rows */
+}
+
+/* Style for the active tab */
+.tab.active {
+  background-color: #fff;
+  border-bottom: 1px solid #fff; /* Add border bottom to active tab */
+}
+
+/* Hover effect */
+.tab:hover {
+  background-color: #eaeaea;
+}
+
+/* Style for tab content */
+.tab-content {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 0 0 5px 5px; /* Rounded corners only on the bottom */
+}
+

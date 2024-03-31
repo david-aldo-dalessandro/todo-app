@@ -4,11 +4,12 @@
  * Component for adding items to the state
  */
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { addNewItem, selectItemCount } from "./itemsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const ItemsAddition = () => {
+  const inputRef = useRef(null);
   const dispatch = useDispatch();
 
   const id = useSelector(selectItemCount);
@@ -27,6 +28,7 @@ const ItemsAddition = () => {
     if (e.key === "Enter") {
       e.preventDefault();
       addItemToState();
+      inputRef.current.focus();
     }
   };
 
@@ -41,6 +43,7 @@ const ItemsAddition = () => {
         value={item}
         onChange={(e) => enterItem(e)}
         onKeyDown={(e) => enterPressed(e)}
+        ref={inputRef}
       ></input>
       <br />
       <input

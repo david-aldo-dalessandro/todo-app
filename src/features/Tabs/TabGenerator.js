@@ -30,7 +30,12 @@ const TabGenerator = ({ itemIds, itemCats }) => {
   let content;
   if (itemIds.length > 0) {
     content = itemIds.map((itemId) => (
-      <ItemsExcerpt key={itemId} itemId={itemId} itemCategory={itemCategory} />
+      <ItemsExcerpt
+        key={itemId}
+        itemId={itemId}
+        itemCategory={itemCategory}
+        onDelete={changeTab}
+      />
     ));
   } else {
     content = <div> No current items to do</div>;
@@ -38,7 +43,7 @@ const TabGenerator = ({ itemIds, itemCats }) => {
 
   const clearAll = () => {
     itemIds.map((itemId) => dispatch(deleteItem(itemId)));
-    setItemCategory("general");
+    setItemCategory("all");
   };
 
   return (
@@ -50,10 +55,12 @@ const TabGenerator = ({ itemIds, itemCats }) => {
         </button>
       )}
       <br />
-      {itemIds.length > 0 && (
-        <TabItem key={0} itemTab="all" onTabClick={changeTab} />
-      )}
-      {tabs}
+      <div className="tab-container">
+        {itemIds.length > 0 && (
+          <TabItem key={0} itemTab="all" onTabClick={changeTab} />
+        )}
+        {tabs}
+      </div>
       <br />
       {content}
     </>

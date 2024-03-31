@@ -10,13 +10,14 @@ const TabItem = ({ itemTab, onTabClick }) => {
   const [tab, setTab] = useState(itemTab);
 
   const returnTabSelection = () => {
-    console.log("setting tab to: " + tab);
     onTabClick(tab);
   };
 
   return (
     <>
-      <button onClick={returnTabSelection}>{tab}</button>{" "}
+      <button onClick={returnTabSelection} className="tab">
+        {tab}
+      </button>{" "}
     </>
   );
 };

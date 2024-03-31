@@ -13,8 +13,6 @@ const ItemsList = () => {
   const itemIds = useSelector(selectItemIds);
   const itemCats = useSelector(selectItemCategories);
 
-  console.log(itemCats);
-
   return (
     <section>
       <h3>To Do </h3>
