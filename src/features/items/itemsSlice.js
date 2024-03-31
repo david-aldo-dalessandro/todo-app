@@ -28,13 +28,13 @@ export const fetchItems = createAsyncThunk("items/fetchItems", async () => {
 export const addNewItem = createAsyncThunk(
   "items/addNewItem",
   async (newItemDetails) => {
-    const { id, title } = newItemDetails;
+    const { id, title, category } = newItemDetails;
     const newItem = {
       id: String(id),
       title: title,
       completed: false,
       important: 0,
-      category: "general",
+      category: category ? category : "general",
       subtasks: [],
     };
     const response = await axiosInstance.post("todos", newItem);

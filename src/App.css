@@ -115,7 +115,7 @@ li li {
 .clearButton{
   margin-bottom: 10px;
   border-radius: 5px; /* Add rounded edges */
-  background-color: lightcoral; /* Change the background color to light red */
+  background-color: rgb(233, 82, 82); /* Change the background color to light red */
   color: white; /* Set text color to white */
   padding: 5px 10px; /* Add padding to the button */
   border: none; /* Remove border */
@@ -124,6 +124,6 @@ li li {
 }
 
 .clearButton:hover{
-  background-color: rgb(207, 108, 108);
+  background-color: rgb(189, 67, 67);
 }
 
