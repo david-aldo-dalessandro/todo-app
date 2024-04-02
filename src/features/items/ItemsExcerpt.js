@@ -13,15 +13,11 @@ import ItemsExpandSubtasks from "./ItemsExpandSubtasks";
 
 const ItemsExcerpt = ({ itemId, itemCategory, onDelete }) => {
   const dispatch = useDispatch();
-  const itemSelected = useSelector((state) => selectItemById(state, itemId));
-  const [item, setItem] = useState(
-    itemCategory === "all"
-      ? itemSelected
-      : itemCategory === itemSelected.category
-      ? itemSelected
-      : undefined
+  const item = useSelector((state) => selectItemById(state, itemId));
+
+  const [itemTitle, setItemTitle] = useState(
+    item === undefined ? "" : item.title.substring(0, 20)
   );
-  const [itemTitle, setItemTitle] = useState(item.title.substring(0, 20));
 
   const deleteIt = (e) => {
     e.preventDefault();
@@ -38,7 +34,7 @@ const ItemsExcerpt = ({ itemId, itemCategory, onDelete }) => {
   };
 
   return (
-    item && (
+    (itemCategory === item.category || itemCategory === "all") && (
       <li
         onDoubleClick={(e) => deleteIt(e)}
         onMouseLeave={shortenText}
