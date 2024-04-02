@@ -56,7 +56,6 @@ export const updateItem = createAsyncThunk(
       subtasks: payload.subtasks ? payload.subtasks : [],
     };
     const response = await axiosInstance.put(`todos/${id}`, newPayload);
-
     return response.data;
   }
 );

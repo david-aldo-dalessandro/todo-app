@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectItemById, updateItem } from "./itemsSlice";
 import SubtaskAddition from "../subtasks/SubtaskAddition";
 import SubtaskExcerpt from "../subtasks/SubtaskExcerpt";
-import { useState } from "react";
 
 const ItemsTasks = () => {
   const navigate = useNavigate();

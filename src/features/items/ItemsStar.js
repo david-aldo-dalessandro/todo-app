@@ -14,17 +14,17 @@ const ItemsStar = ({ item }) => {
   const [important, setImportant] = useState(Boolean(item.important));
 
   const toggle = () => {
+    setImportant(!important);
     dispatch(
       updateItem({
         id: item.id,
         title: item.title,
         completed: item.completed,
-        important: item.important === 0 ? 1 : 0,
+        important: Number(!important),
         category: item.category,
         subtasks: item.subtasks,
       })
     );
-    setImportant(!important);
   };
   return (
     <div className="starButton-container">
