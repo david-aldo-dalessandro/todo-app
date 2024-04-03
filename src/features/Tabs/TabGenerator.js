@@ -10,7 +10,7 @@ import TabItem from "./TabItem";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
-const TabGenerator = ({ itemIds, itemCats }) => {
+const TabGenerator = ({ itemIds, itemCats, forceRerender }) => {
   const dispatch = useDispatch();
   const [itemCategory, setItemCategory] = useState("all");
 
@@ -35,6 +35,7 @@ const TabGenerator = ({ itemIds, itemCats }) => {
         itemId={itemId}
         itemCategory={itemCategory}
         onDelete={changeTab}
+        forceRerender={forceRerender}
       />
     ));
   } else {
