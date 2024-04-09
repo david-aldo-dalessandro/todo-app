@@ -17,6 +17,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 In /data create your db.json and fill it with empty brackets []
 
-run npx json-server --watch data/db.json --port 3005
+run npx json-server --watch data/db.json --port 3009
 
 refresh the app
